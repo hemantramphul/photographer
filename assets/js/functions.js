@@ -1,7 +1,7 @@
 $(document).ready(function () {
   loadData();
 
-  $("#addPhoto").submit(function (event) {
+  $("#addPhotoForm").submit(function (event) {
     event.preventDefault();
     $(this).ajaxSubmit({
       error: function (xhr) {},
@@ -11,21 +11,25 @@ $(document).ready(function () {
     });
   });
 
-  $("#btnDelete").click(function (event) {
+  $("#btnDeletePhoto").click(function (event) {
     event.preventDefault();
-    const id = $("#bookId").val();
+    const id = $("#photoId").val();
     $.ajax({
       type: "get",
-      url: "/books/delete/" + id,
+      url: "/delete/" + id,
       dataType: "text",
     }).done(function (data) {
       loadData();
-      $("#confirmationModal").modal("toggle");
+      $("#deletePhotoModal").modal("toggle");
     });
   });
 
   $("#addPhotoModal").on("hidden.bs.modal", function () {
     $("#addPhotoModal form")[0].reset();
+  });
+
+  $("#editPhotoModal").on("hidden.bs.modal", function () {
+    $("#editPhotoModal form")[0].reset();
   });
 
   function loadData() {
@@ -48,6 +52,13 @@ $(document).ready(function () {
                     <div class="title padd-15"><h4 class="skin-color-style">${photo.title}</h4></div>
                     <div class="title padd-15 skin-color-style"><i class="fa fa-map-pin"></i> ${photo.location}</div>
                     <div class="description padd-15 skin-color-style-text">${photo.description}</div>
+                    <div>&nbsp;</div>
+                    <div class="description padd-15">
+                      <button type="button" class="btn btn-sm btn-danger" data-photo-id="${photo.id}" data-toggle="modal" data-target="#deletePhotoModal" 
+                      data-backdrop="static" data-keyboard="false">Delete</button>
+                      <button type="button" class="btn btn-sm btn-warning"  data-photo-id="${photo.id}" data-toggle="modal" data-target="#editPhotoModal"
+                      data-backdrop="static" data-keyboard="false">Edit</button>
+                    </div>
                 </div>
         `;
 
@@ -60,46 +71,54 @@ $(document).ready(function () {
     $("#addPhotoModal").modal("toggle");
   }
 
-  //triggered when modal is about to be shown
-  $("#confirmationModal").on("show.bs.modal", function (e) {
+  $("#deletePhotoModal").on("show.bs.modal", function (e) {
     //get data-id attribute of the clicked element
-    var bookId = $(e.relatedTarget).data("book-id");
+    var id = $(e.relatedTarget).data("photo-id");
 
     //populate the textbox
-    $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+    $(e.currentTarget).find('input[name="photoId"]').val(id);
   });
 
-  $("#editModal").on("shown.bs.modal", function (e) {
+  $("#editPhotoModal").on("shown.bs.modal", function (e) {
     //get data-id attribute of the clicked element
-    var bookId = $(e.relatedTarget).data("book-id");
+    var id = $(e.relatedTarget).data("photo-id");
 
     e.preventDefault();
     $.ajax({
       type: "get",
-      url: "/books/edit/" + bookId,
+      url: "/edit/" + id,
       dataType: "json",
     }).done(function (data) {
       //var res = JSON.parse(data);
-      $("#updateName").val(data[0].name);
-      $("#updateAuthor").val(data[0].author);
-      $("#editForm").attr("action", "/books/update/" + data[0].id);
+      $("#updateTitle").val(data[0].title);
+      $("#updateLocation").val(data[0].location);
+      $("#updateDescription").val(data[0].description);
+      $("#editPhotoForm").attr("action", "/update/" + data[0].id);
     });
   });
 
-  $("#editForm").submit(function (event) {
+  $("#editPhotoForm").submit(function (event) {
     event.preventDefault();
-    var url = $("#editForm").attr("action");
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: {
-        name: $("#updateName").val(),
-        author: $("#updateAuthor").val(),
+    var url = $("#editPhotoForm").attr("action");
+    $(this).ajaxSubmit({
+      error: function (xhr) {},
+      success: function (response) {
+        loadData();
+        $("#editPhotoModal").modal("toggle");
       },
-      dataType: "json",
     });
+    // $.ajax({
+    //   url: url,
+    //   type: "POST",
+    //   data: {
+    //     title: $("#updateTitle").val(),
+    //     location: $("#updateLocation").val(),
+    //     description: $("#updateDescription").val(),
+    //   },
+    //   dataType: "json",
+    // });
 
-    loadData();
-    $("#editModal").modal("toggle");
+    // loadData();
+    // $("#editPhotoModal").modal("toggle");
   });
 });

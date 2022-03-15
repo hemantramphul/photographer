@@ -71,4 +71,66 @@ router.post("/add", upload.single("image"), function (req, res, next) {
   });
 });
 
+/**
+ * GET record to edit
+ */
+router.get("/edit/(:id)", function (req, res, next) {
+  let id = req.params.id;
+
+  dbConn.query(
+    "SELECT * FROM photos WHERE id = " + id,
+    function (err, rows, fields) {
+      if (err) throw err;
+      res.json(rows);
+    }
+  );
+});
+
+/**
+ * POST update record
+ */
+router.post("/update/:id", upload.single("image"), function (req, res, next) {
+  let id = req.params.id;
+  let title = req.body.title;
+  let location = req.body.location;
+  let description = req.body.description;
+  let image = req.file;
+  var form_data = {};
+
+  if (image) {
+    form_data = {
+      title: title,
+      location: location,
+      description: description,
+      image: image.filename,
+    };
+  } else {
+    form_data = {
+      title: title,
+      location: location,
+      description: description,
+    };
+  }
+
+  // update query
+  dbConn.query(
+    "UPDATE photos SET ? WHERE id = " + id,
+    form_data,
+    function (err, result) {
+      res.redirect("/");
+    }
+  );
+});
+
+/**
+ * GET delete record
+ */
+router.get("/delete/(:id)", function (req, res, next) {
+  let id = req.params.id;
+
+  dbConn.query("DELETE FROM photos WHERE id = " + id, function (err, result) {
+    res.redirect("/");
+  });
+});
+
 module.exports = router;
