@@ -1,7 +1,7 @@
 $(document).ready(function () {
   loadData();
 
-  $("#addNew").submit(function (event) {
+  $("#addPhoto").submit(function (event) {
     event.preventDefault();
     $(this).ajaxSubmit({
       error: function (xhr) {},
@@ -24,41 +24,39 @@ $(document).ready(function () {
     });
   });
 
-  $("#addModal").on("hidden.bs.modal", function () {
-    $("#addModal form")[0].reset();
+  $("#addPhotoModal").on("hidden.bs.modal", function () {
+    $("#addPhotoModal form")[0].reset();
   });
 
   function loadData() {
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "/books/list", false);
+    xhttp.open("GET", "/list", false);
     xhttp.send();
 
-    const books = JSON.parse(xhttp.responseText);
-    document.getElementById("books").innerHTML = "";
-    for (let book of books) {
-      const x = `
-            <div class="col-4">
-                <div class="card">
-                    <img class="img-fluid img-thumbnail" src="img/${book.image}" alt="${book.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${book.name}</h5>
-                        <p class="card-text">${book.author}</p>
-
-                        <button type="button" class="btn btn-danger" data-book-id="${book.id}" data-toggle="modal" data-target="#confirmationModal" data-backdrop="static" data-keyboard="false">Delete</button>
-                        <button type="button" class="btn btn-primary"  data-book-id="${book.id}" data-toggle="modal" data-target="#editModal" data-backdrop="static" data-keyboard="false">Edit</button>
+    const photos = JSON.parse(xhttp.responseText);
+    document.getElementById("photos").innerHTML = "";
+    for (let photo of photos) {
+      const content = `
+                <div class="portfolio-item padd-15">
+                    <div class="portfolio-item-inner shadow-dark">
+                        <div class="portfolio-img">
+                            <img src="img/${photo.image}" alt="${photo.title}" width="100" height="300">
+                        </div>
                     </div>
+                    
+                    <div class="title padd-15"><p class="contact-title" style="text-align:left;font-size:20px;margin-bottom: 5px;">${photo.title}</p></div>
+                    <div class="description padd-15" style="color:white;">${photo.description}</div>
                 </div>
-            </div>
         `;
 
-      document.getElementById("books").innerHTML += x;
+      document.getElementById("photos").innerHTML += content;
     }
   }
 
   function refresh() {
     loadData();
-    $("#addModal").modal("toggle");
+    $("#addPhotoModal").modal("toggle");
   }
 
   //triggered when modal is about to be shown

@@ -1,387 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
 
-        <!-- CSS Files  -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/skins/color-1.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!--- Style Switcher --->
-        <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-        <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-        <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-        <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-        <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-        <link rel="stylesheet" href="css/style-switcher.css">
-        <link rel="stylesheet" href="css/stylesheet.css">
-    </head>
-    <body class="dark">
-        <!-- Main Container Start -->
-        <div class="main-container">
-            <!--- Aside Start --->
-            <div class="aside">
-                <div class="logo">
-                    <a href="#"><span>A</span>tlas</a>
-                </div>
-                <div class="nav-toggler">
-                    <span></span>
-                </div>
-                <ul class="nav">
-                    <li><a href="#home"><i class="fa fa-home"></i>Home</a></li>
-                    <li><a href="#login" data-toggle="modal" data-target="#loginModal"><i class="fa fa-lock"></i>Login</a></li>
-                    <li><a href="#about"><i class="fa fa-user"></i>About</a></li>
-                    <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a></li>
-                    <li><a href="#contact"><i class="fa fa-comments"></i>Contact</a></li>
-                </ul>
-            </div>
-            <!--- Aside End --->
-            <!--- Main Content Start --->
-            <div class="main-content">
-
-                <!--- Home Section Start --->
-                <section class="home section" id="home">
-                    <div class="container">
-                        <div class="row">
-                            <div class="home-info padd-15">
-                                <h3 class="hello">Hello, my name is <span class="name">Henry Cavil</span></h3>
-                                <h3 class="my-profession">I'm a <span class="typing">web designer</span></h3>
-                                <p>I'm a web Designer with extensive experience for over 10 years. My expertise is to create and wed design, graphic design, and many more...</p>
-                                <a href="#contact" class="btn btn-danger">More about me</a>
-                            </div>
-                            <div class="home-img padd-15">
-                                <img src="img/Henry.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--- Home Section End --->
-                
-
-                <!--- Login Section Start --->
-                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title">Login</h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                            <form action="/examples/actions/confirmation.php" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
-                                </div>     
-                                <div class="clearfix">
-                                    <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-                                </div>  
-                            </form>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-                <!--- Login Section End --->
-
-                <!--- About Section Start --->
-                <section class="about section" id="about">
-                    <div class="container">
-                        <div class="row">
-                            <div class="section-title padd-15">
-                                <h2>About Me</h2>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="buttons padd-15">
-                                <a href="#" class="btn">Add Education</a>
-                                <a href="#contact" class="btn hire me">Add Eperience</a>
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="row">
-                            <div class="about-content padd-15">
-                                <div class="row">
-                                    <div class="about-text padd-15">
-                                        <h3>I'm Henry Cavil and a <span>Web Developer</span></h3>
-                                        <p>qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm
-                                        qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm
-                                        qwertyuiopasdfghjkzxcvbnmqwertyuiopasdfghjklzxcvbnm</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="personal-info padd-15">
-                                        <div class="row">
-                                            <div class="info-item padd-15">
-                                                <p>DOB: <span>17 Sep 1999</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>Age: <span>22</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>Email: <span>henrycavil@outlook.com</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>Deegree: <span>CS</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>Phone number: <span>+230 567889898</span></p>
-                                            </div>
-                                            <div class="info-item padd-15">
-                                                <p>City: <span>Port-Louis</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="skills padd-15">
-                                        <div class="row">
-                                            <div class="skill-item padd-15">
-                                                <h5>CSS</h5>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 86%;"></div>
-                                                    <div class="skill-percent">86%</div>
-                                                </div>
-                                            </div>
-                                            <div class="skill-item padd-15">
-                                                <h5>PHP</h5>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 66%;"></div>
-                                                    <div class="skill-percent">66%</div>
-                                                </div>
-                                            </div>
-                                            <div class="skill-item padd-15">
-                                                <h5>HTML</h5>
-                                                <div class="progress">
-                                                    <div class="progress-in" style="width: 96%;"></div>
-                                                    <div class="skill-percent">96%</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="education padd-15">
-                                        <h3 class="title">Education</h3>
-                                        <div class="row">
-                                            <div class="timeline-box padd-15">
-                                                <div class="timeline shadow-dark">
-                                                    <!--  timeline item-->
-                                                    <div class="timeline-item">
-                                                        <div class="circle-dot"></div>
-                                                        <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"></i> 2021 - 2022
-                                                        </h3>
-                                                        <h4 class="timeline-title"> Master in Computer Science</h4>
-                                                        <p class="timeline-text">qwerty</p>
-                                                    </div>
-                                                     <!--  timeline item-->
-                                                     <div class="timeline-item">
-                                                        <div class="circle-dot"></div>
-                                                        <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"></i> 2021 - 2022
-                                                        </h3>
-                                                        <h4 class="timeline-title"> Master in Computer Science</h4>
-                                                        <p class="timeline-text">qwerty</p>
-                                                    </div>
-                                                     <!--  timeline item-->
-                                                    <div class="timeline-item">
-                                                        <div class="circle-dot"></div>
-                                                        <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"></i> 2021 - 2022
-                                                        </h3>
-                                                        <h4 class="timeline-title"> Master in Computer Science</h4>
-                                                        <p class="timeline-text">qwerty</p>
-                                                    </div> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="experience padd-15">
-                                        <h3 class="title">Experience</h3>
-                                        <div class="row">
-                                            <div class="timeline-box padd-15">
-                                                <div class="timeline shadow-dark">
-                                                    <!--  timeline item-->
-                                                    <div class="timeline-item">
-                                                        <div class="circle-dot"></div>
-                                                        <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"></i> 2021 - 2022
-                                                        </h3>
-                                                        <h4 class="timeline-title"> Master in Computer Science</h4>
-                                                        <p class="timeline-text">qwerty</p>
-                                                    </div>
-                                                     <!--  timeline item-->
-                                                     <div class="timeline-item">
-                                                        <div class="circle-dot"></div>
-                                                        <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"></i> 2021 - 2022
-                                                        </h3>
-                                                        <h4 class="timeline-title"> Master in Computer Science</h4>
-                                                        <p class="timeline-text">qwerty</p>
-                                                    </div>
-                                                     <!--  timeline item-->
-                                                    <div class="timeline-item">
-                                                        <div class="circle-dot"></div>
-                                                        <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"></i> 2021 - 2022
-                                                        </h3>
-                                                        <h4 class="timeline-title"> Master in Computer Science</h4>
-                                                        <p class="timeline-text">qwerty</p>
-                                                    </div> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--- About Section End --->
-
-                <!--- Portfolio Section Start --->
-                <section class="portfolio section" id="portfolio">
-                    <div class="container">
-                        <div class="row">
-                            <div class="section-title padd-15">
-                                <h2>Portfolio</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="buttons padd-15">
-                                <a href="#" class="btn btn-danger">Add new photo</a>
-                            </div>
-                        </div>
-                        <br><br><br>
-                        <div class="row">
-                            <!--- Portfolio item start -->
-                            <div class="portfolio-item padd-15">
-                                <div class="portfolio-item-inner shadow-dark">
-                                    <div class="portfolio-img">
-                                        <img src="images/portfolio/tree.jfif" alt="" width="100" height="300">
-                                    </div>
-                                </div>
-                                <div class="title padd-15">Tree in the middle of a lake</div>
-                                <div class="description padd-15">Tree surrounder by water</div>
-                            </div>
-                            <!--- Portfolio item end -->
-                            <!--- Portfolio item start -->
-                            <div class="portfolio-item padd-15">
-                                <div class="portfolio-item-inner shadow-dark">
-                                    <div class="portfolio-img">
-                                        <img src="images/portfolio/woman.jfif" alt="" width="100" height="300">
-                                    </div>
-                                </div>
-                                <div class="title padd-15">Woman in black & white</div>
-                                <div class="description padd-15">Woman photographed in black and white</div>
-                            </div>
-                            <!--- Portfolio item end -->
-                            <!--- Portfolio item start -->
-                            <div class="portfolio-item padd-15">
-                                <div class="portfolio-item-inner shadow-dark">
-                                    <div class="portfolio-img">
-                                        <img src="images/portfolio/Deer.jfif" alt="" width="100" height="300"></a>                                        
-                                    </div>                                    
-                                </div>
-                                <div class="title padd-15">Deer in black & white</div>
-                                <div class="description padd-15">Wild deer photographed in black and white</div>
-                            </div>
-                            <!--- Portfolio item end -->
-                        </div>
-                    </div>
-                </section>    
-                <!--- Portfolio Section End --->
-
-                <!--- Contact Section Start --->
-                <section class="contact section" id="contact">
-                    <div class="container">
-                        <div class="row">
-                            <div class="section-title padd-15">
-                                <h2>Contact</h2>
-                            </div>
-                        </div>
-                        <h3 class="contact-title padd-15">Have any questions ?</h3>
-                        <h4 class="contact-sub-title padd-15">CONTACT ME</h4>
-                        <div class="row">
-                            <!--- Contact info item start --->
-                            <div class="contact-info-item padd-15">
-                                <div class="icon"><i class="fa fa-phone"></i></div>
-                                <h4>Phone</h4>
-                                <p>678 5687</p>
-                            </div>
-                            <!--- Contact info item end --->
-                            <!--- Contact info item start --->
-                            <div class="contact-info-item padd-15">
-                                <div class="icon"><i class="fa fa-mobile-screen-button"></i></div>
-                                <h4>Mobile</h4>
-                                <p>+230 59573637</p>
-                            </div>
-                            <!--- Contact info item start --->
-                            <div class="contact-info-item padd-15">
-                                <div class="icon"><i class="fa fa-envelope"></i></div>
-                                <h4>Email</h4>
-                                <p>henrycavill@outlook.com</p>
-                            </div>
-                            <!--- Contact info item end --->
-                            <!--- Contact info item start --->
-                            <div class="contact-info-item padd-15">
-                                <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
-                                <h4>Location</h4>
-                                <p>Port-Louis</p>
-                            </div>
-                            <!--- Contact info item end --->
-                        </div>
-                        <h3 class="contact-title padd-15">SEND AN EMAIL</h3>
-                        <h4 class="contact-sub-title padd-15">VERY RESPONSIVE TO MESSAGES</h4>
-                    </div>
-                </section>
-                <!--- Contact Section End --->
-            </div>
-            <!--- Main Content End --->
+    <!-- CSS Files  -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/skins/color-1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!--- Style Switcher --->
+    <link
+      rel="stylesheet"
+      href="css/skins/color-1.css"
+      class="alternate-style"
+      title="color-1"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      href="css/skins/color-2.css"
+      class="alternate-style"
+      title="color-2"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      href="css/skins/color-3.css"
+      class="alternate-style"
+      title="color-3"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      href="css/skins/color-4.css"
+      class="alternate-style"
+      title="color-4"
+      disabled
+    />
+    <link
+      rel="stylesheet"
+      href="css/skins/color-5.css"
+      class="alternate-style"
+      title="color-5"
+      disabled
+    />
+    <link rel="stylesheet" href="css/style-switcher.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+  </head>
+  <body class="dark">
+    <!-- Main Container Start -->
+    <div class="main-container">
+      <!--- Aside Start --->
+      <div class="aside">
+        <div class="logo">
+          <a href="#"><span>A</span>tlas</a>
         </div>
-        <!-- Main Container End --->
-
-        <!--- Style Switcher Start --->
-        <div class="style-switcher">
-            <div class="style-switcher-toggler s-icon">
-                <i class="fas fa-cog fa-spin"></i>                
-            </div>
-            <div class="day-night s-icon">
-                <i class="fas "></i>
-            </div>
-            <h4>Theme Color</h4>
-            <div class="colors">
-                <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-                <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-                <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-                <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-                <span class="color-5" onclick="setActiveStyle('color-5')"></span>
-            </div>
+        <div class="nav-toggler">
+          <span></span>
         </div>
-        <!-- JQuery Core JavaScript -->
-        <script src="js/jquery.min.js"></script>
-        <!-- Bootstrap core JS-->
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <ul class="nav">
+          <li>
+            <a href="#home"><i class="fa fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#login" data-toggle="modal" data-target="#loginModal"
+              ><i class="fa fa-lock"></i>Login</a
+            >
+          </li>
+          <li>
+            <a href="#about"><i class="fa fa-user"></i>About</a>
+          </li>
+          <li>
+            <a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a>
+          </li>
+          <li>
+            <a href="#contact"><i class="fa fa-comments"></i>Contact</a>
+          </li>
+        </ul>
+      </div>
+      <!--- Aside End --->
+      <!--- Main Content Start --->
+      <div class="main-content">
+        <!--- Home Section Start --->
+        <section class="home section" id="home">
+          <div class="container">
+            <div class="row">
+              <div class="home-info padd-15">
+                <h3 class="hello">
+                  Hello, my name is <span class="name">Henry Cavil</span>
+                </h3>
+                <h3 class="my-profession">
+                  I'm a <span class="typing">web designer</span>
+                </h3>
+                <p>
+                  I'm a web Designer with extensive experience for over 10
+                  years. My expertise is to create and wed design, graphic
+                  design, and many more...
+                </p>
+                <a href="#contact" class="btn btn-danger">More about me</a>
+              </div>
+              <div class="home-img padd-15">
+                <img src="img/Henry.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--- Home Section End --->
 
-        <!-- JS Files -->
-        <script src="js/typed.min.js" referrerpolicy="no-referrer"></script>
-        <script src="js/scripts.js"></script>
-        <script src="js/style-switcher.js"></script>
-    </body>
+        <!--- Login Section Start --->
+        <div
+          class="modal fade"
+          id="loginModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Login</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/examples/actions/confirmation.php" method="post">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Username"
+                      required="required"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required="required"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">
+                      Log in
+                    </button>
+                  </div>
+                  <div class="clearfix">
+                    <label class="float-left form-check-label"
+                      ><input type="checkbox" /> Remember me</label
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--- Login Section End --->
+
+        <!--- About Section Start --->
+        <section class="about section" id="about">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>About Me</h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="buttons padd-15">
+                <a href="#" class="btn">Add Education</a>
+                <a href="#contact" class="btn hire me">Add Eperience</a>
+              </div>
+            </div>
+            <br /><br />
+            <div class="row">
+              <div class="about-content padd-15">
+                <div class="row">
+                  <div class="about-text padd-15">
+                    <h3>I'm Henry Cavil and a <span>Web Developer</span></h3>
+                    <p>
+                      qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm
+                      qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm
+                      qwertyuiopasdfghjkzxcvbnmqwertyuiopasdfghjklzxcvbnm
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="personal-info padd-15">
+                    <div class="row">
+                      <div class="info-item padd-15">
+                        <p>DOB: <span>17 Sep 1999</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>Age: <span>22</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>Email: <span>henrycavil@outlook.com</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>Deegree: <span>CS</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>Phone number: <span>+230 567889898</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>City: <span>Port-Louis</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skills padd-15">
+                    <div class="row">
+                      <div class="skill-item padd-15">
+                        <h5>CSS</h5>
+                        <div class="progress">
+                          <div class="progress-in" style="width: 86%"></div>
+                          <div class="skill-percent">86%</div>
+                        </div>
+                      </div>
+                      <div class="skill-item padd-15">
+                        <h5>PHP</h5>
+                        <div class="progress">
+                          <div class="progress-in" style="width: 66%"></div>
+                          <div class="skill-percent">66%</div>
+                        </div>
+                      </div>
+                      <div class="skill-item padd-15">
+                        <h5>HTML</h5>
+                        <div class="progress">
+                          <div class="progress-in" style="width: 96%"></div>
+                          <div class="skill-percent">96%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="education padd-15">
+                    <h3 class="title">Education</h3>
+                    <div class="row">
+                      <div class="timeline-box padd-15">
+                        <div class="timeline shadow-dark">
+                          <!--  timeline item-->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> 2021 - 2022
+                            </h3>
+                            <h4 class="timeline-title">
+                              Master in Computer Science
+                            </h4>
+                            <p class="timeline-text">qwerty</p>
+                          </div>
+                          <!--  timeline item-->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> 2021 - 2022
+                            </h3>
+                            <h4 class="timeline-title">
+                              Master in Computer Science
+                            </h4>
+                            <p class="timeline-text">qwerty</p>
+                          </div>
+                          <!--  timeline item-->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> 2021 - 2022
+                            </h3>
+                            <h4 class="timeline-title">
+                              Master in Computer Science
+                            </h4>
+                            <p class="timeline-text">qwerty</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="experience padd-15">
+                    <h3 class="title">Experience</h3>
+                    <div class="row">
+                      <div class="timeline-box padd-15">
+                        <div class="timeline shadow-dark">
+                          <!--  timeline item-->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> 2021 - 2022
+                            </h3>
+                            <h4 class="timeline-title">
+                              Master in Computer Science
+                            </h4>
+                            <p class="timeline-text">qwerty</p>
+                          </div>
+                          <!--  timeline item-->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> 2021 - 2022
+                            </h3>
+                            <h4 class="timeline-title">
+                              Master in Computer Science
+                            </h4>
+                            <p class="timeline-text">qwerty</p>
+                          </div>
+                          <!--  timeline item-->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> 2021 - 2022
+                            </h3>
+                            <h4 class="timeline-title">
+                              Master in Computer Science
+                            </h4>
+                            <p class="timeline-text">qwerty</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--- About Section End --->
+
+        <!--- Portfolio Section Start --->
+        <section class="portfolio section" id="portfolio">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Portfolio</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="buttons padd-15">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#addPhotoModal"
+                  data-backdrop="static"
+                  data-keyboard="false"
+                >
+                  Add new photo
+                </button>
+              </div>
+            </div>
+            <!-- Start Modal: ADD -->
+            <div class="modal fade" id="addPhotoModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Add Book</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                      &times;
+                    </button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <form
+                      id="addPhoto"
+                      action="/add"
+                      method="post"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="form-group">
+                        <label>Title:</label>
+                        <input
+                          id="addTitle"
+                          type="text"
+                          class="form-control"
+                          name="title"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Location:</label>
+                        <input
+                          id="addLocation"
+                          type="text"
+                          class="form-control"
+                          name="location"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Description:</label>
+                        <input
+                          id="addDescription"
+                          type="text"
+                          class="form-control"
+                          name="description"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Upload:</label>
+                        <input
+                          type="file"
+                          name="image"
+                          accept="image/*"
+                          id="addImage"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="submit"
+                          class="btn btn-success"
+                          value="Save"
+                        />
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Modal: ADD -->
+            <br /><br /><br />
+            <div class="row" id="photos"></div>
+          </div>
+        </section>
+        <!--- Portfolio Section End --->
+
+        <!--- Contact Section Start --->
+        <section class="contact section" id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Contact</h2>
+              </div>
+            </div>
+            <h3 class="contact-title padd-15">Have any questions ?</h3>
+            <h4 class="contact-sub-title padd-15">CONTACT ME</h4>
+            <div class="row">
+              <!--- Contact info item start --->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-phone"></i></div>
+                <h4>Phone</h4>
+                <p>678 5687</p>
+              </div>
+              <!--- Contact info item end --->
+              <!--- Contact info item start --->
+              <div class="contact-info-item padd-15">
+                <div class="icon">
+                  <i class="fa fa-mobile-screen-button"></i>
+                </div>
+                <h4>Mobile</h4>
+                <p>+230 59573637</p>
+              </div>
+              <!--- Contact info item start --->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-envelope"></i></div>
+                <h4>Email</h4>
+                <p>henrycavill@outlook.com</p>
+              </div>
+              <!--- Contact info item end --->
+              <!--- Contact info item start --->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
+                <h4>Location</h4>
+                <p>Port-Louis</p>
+              </div>
+              <!--- Contact info item end --->
+            </div>
+            <h3 class="contact-title padd-15">SEND AN EMAIL</h3>
+            <h4 class="contact-sub-title padd-15">
+              VERY RESPONSIVE TO MESSAGES
+            </h4>
+          </div>
+        </section>
+        <!--- Contact Section End --->
+      </div>
+      <!--- Main Content End --->
+    </div>
+    <!-- Main Container End --->
+
+    <!--- Style Switcher Start --->
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon">
+        <i class="fas fa-cog fa-spin"></i>
+      </div>
+      <div class="day-night s-icon">
+        <i class="fas"></i>
+      </div>
+      <h4>Theme Color</h4>
+      <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+        <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+        <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+        <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+      </div>
+    </div>
+    <!-- JQuery Core JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="/js/jquery.form.min.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="/js/functions.js"></script>
+
+    <!-- JS Files -->
+    <script src="js/typed.min.js" referrerpolicy="no-referrer"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/style-switcher.js"></script>
+  </body>
 </html>
