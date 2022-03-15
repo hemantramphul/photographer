@@ -1,3 +1,5 @@
+var LOGIN = false;
+
 $(document).ready(function () {
   loadData();
 
@@ -9,6 +11,29 @@ $(document).ready(function () {
         refresh();
       },
     });
+  });
+
+  $("#loginForm").submit(function (event) {
+    event.preventDefault();
+    $(this).ajaxSubmit({
+      error: function (xhr) {
+        console.log(xhr);
+      },
+      success: function (response) {
+        var result = response;
+        if (response.error) {
+          $("#passwordsNoMatchLogin").show();
+        } else {
+          $("#loginModal").modal("toggle");
+          LOGIN = true;
+          $(".loginUsername").html(response.username);
+        }
+      },
+    });
+  });
+
+  $("#loginModal").on("show.bs.modal", function (e) {
+    $("#passwordsNoMatchLogin").hide();
   });
 
   $("#btnDeletePhoto").click(function (event) {

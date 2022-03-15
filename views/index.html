@@ -66,12 +66,15 @@
         </div>
         <ul class="nav">
           <li>
-            <a href="#home"><i class="fa fa-home"></i>Home</a>
+            <a href="#home"
+              ><i class="fa fa-home"></i>Home <span><%= username %></span></a
+            >
           </li>
           <li>
             <a href="#login" data-toggle="modal" data-target="#loginModal"
-              ><i class="fa fa-lock"></i>Login</a
-            >
+              ><i class="fa fa-lock"></i>Login
+              <span class="loginUsername"></span
+            ></a>
           </li>
           <li>
             <a href="#about"><i class="fa fa-user"></i>About</a>
@@ -138,13 +141,19 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="/examples/actions/confirmation.php" method="post">
+                <div
+                  class="alert alert-warning alert-dismissible fade show"
+                  id="passwordsNoMatchLogin"
+                >
+                  Please enter correct username and password!
+                </div>
+                <form action="/authentication" method="post" id="loginForm">
                   <div class="form-group">
                     <input
                       type="text"
                       class="form-control"
                       placeholder="Username"
-                      required="required"
+                      name="email"
                     />
                   </div>
                   <div class="form-group">
@@ -152,7 +161,7 @@
                       type="password"
                       class="form-control"
                       placeholder="Password"
-                      required="required"
+                      name="password"
                     />
                   </div>
                   <div class="form-group">
@@ -181,13 +190,6 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="buttons padd-15">
-                <a href="#" class="btn">Add Education</a>
-                <a href="#contact" class="btn hire me">Add Eperience</a>
-              </div>
-            </div>
-            <br /><br />
             <div class="row">
               <div class="about-content padd-15">
                 <div class="row">
@@ -251,7 +253,20 @@
                 </div>
                 <div class="row">
                   <div class="education padd-15">
-                    <h3 class="title">Education</h3>
+                    <h3 class="title">
+                      Education
+                      <button
+                        type="button"
+                        class="btn btn-danger btn-sm float-right"
+                        data-toggle="modal"
+                        data-target="#addEducationModal"
+                        data-backdrop="static"
+                        data-keyboard="false"
+                      >
+                        Add Education
+                      </button>
+                    </h3>
+
                     <div class="row">
                       <div class="timeline-box padd-15">
                         <div class="timeline shadow-dark">
@@ -293,7 +308,19 @@
                     </div>
                   </div>
                   <div class="experience padd-15">
-                    <h3 class="title">Experience</h3>
+                    <h3 class="title">
+                      Experience
+                      <button
+                        type="button"
+                        class="btn btn-danger btn-sm float-right"
+                        data-toggle="modal"
+                        data-target="#addExperienceModal"
+                        data-backdrop="static"
+                        data-keyboard="false"
+                      >
+                        Add Experience
+                      </button>
+                    </h3>
                     <div class="row">
                       <div class="timeline-box padd-15">
                         <div class="timeline shadow-dark">
