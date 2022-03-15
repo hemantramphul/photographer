@@ -45,8 +45,9 @@ $(document).ready(function () {
                         </div>
                     </div>
                     
-                    <div class="title padd-15"><p class="contact-title" style="text-align:left;font-size:20px;margin-bottom: 5px;">${photo.title}</p></div>
-                    <div class="description padd-15" style="color:white;">${photo.description}</div>
+                    <div class="title padd-15"><h4 class="skin-color-style">${photo.title}</h4></div>
+                    <div class="title padd-15 skin-color-style"><i class="fa fa-map-pin"></i> ${photo.location}</div>
+                    <div class="description padd-15 skin-color-style-text">${photo.description}</div>
                 </div>
         `;
 

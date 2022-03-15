@@ -739,6 +739,10 @@ h3.my-profession {
   margin-bottom: 20px;
 }
 
+.skin-color-style {
+  color: var(--skin-color);
+}
+
 .contact-sub-title {
   color: var(--text-black-900);
   text-align: center;
@@ -776,4 +780,8 @@ h3.my-profession {
   line-height: 25px;
   color: var(--text-black-700);
   font-weight: 400;
+}
+
+.skin-color-style-text {
+  color: var(--text-black-700);
 }
