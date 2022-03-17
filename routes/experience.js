@@ -7,11 +7,11 @@ var dbConn = require("../lib/db");
  */
 
 /**
- * GET list of educations
+ * GET list of experiences
  */
 router.get("/list", function (req, res, next) {
   dbConn.query(
-    "SELECT * FROM education ORDER BY id desc",
+    "SELECT * FROM experience ORDER BY id desc",
     function (err, rows) {
       if (err) {
         res.render({ data: err });
@@ -23,29 +23,30 @@ router.get("/list", function (req, res, next) {
 });
 
 /**
- * POST add education via popup
+ * POST add photos via popup
  */
+// add a new book
 router.post("/add", function (req, res, next) {
-  let user_id = req.session.userid;
-  let edu_startyear = req.body.edu_startyear;
-  let edu_endyear = req.body.edu_endyear;
-  let edu_location = req.body.edu_location;
-  let edu_field = req.body.edu_field;
+  let user_id = 1; //req.session.userid;
+  let ex_month = req.body.ex_month;
+  let ex_year = req.body.ex_year;
+  let ex_location = req.body.ex_location;
+  let ex_job = req.body.ex_job;
 
   var form_data = {
     user_id: user_id,
-    year_start: edu_startyear,
-    year_ended: edu_endyear,
-    location: edu_location,
-    field: edu_field,
+    ex_month: ex_month,
+    ex_year: ex_year,
+    location: ex_location,
+    job: ex_job,
   };
 
   // insert query
   dbConn.query(
-    "INSERT INTO education SET ?",
+    "INSERT INTO experience SET ?",
     form_data,
     function (err, result) {
-      req.flash("success", "Edcucation successfully added");
+      req.flash("success", "Experience successfully added");
       res.redirect("/");
     }
   );
@@ -58,7 +59,7 @@ router.get("/edit/(:id)", function (req, res, next) {
   let id = req.params.id;
 
   dbConn.query(
-    "SELECT * FROM education WHERE id = " + id,
+    "SELECT * FROM experience WHERE id = " + id,
     function (err, rows, fields) {
       if (err) throw err;
       res.json(rows);
@@ -71,22 +72,22 @@ router.get("/edit/(:id)", function (req, res, next) {
  */
 router.post("/update/:id", function (req, res, next) {
   let id = req.params.id;
-  let edu_startyear = req.body.edu_startyear;
-  let edu_endyear = req.body.edu_endyear;
-  let edu_location = req.body.edu_location;
-  let edu_field = req.body.edu_field;
+  let ex_month = req.body.ex_month;
+  let ex_year = req.body.ex_year;
+  let ex_location = req.body.ex_location;
+  let ex_job = req.body.ex_job;
   var form_data = {};
 
   var form_data = {
-    year_start: edu_startyear,
-    year_ended: edu_endyear,
-    location: edu_location,
-    field: edu_field,
+    ex_month: ex_month,
+    ex_year: ex_year,
+    location: ex_location,
+    job: ex_job,
   };
 
   // update query
   dbConn.query(
-    "UPDATE education SET ? WHERE id = " + id,
+    "UPDATE experience SET ? WHERE id = " + id,
     form_data,
     function (err, result) {
       res.redirect("/");
@@ -101,7 +102,7 @@ router.get("/delete/(:id)", function (req, res, next) {
   let id = req.params.id;
 
   dbConn.query(
-    "DELETE FROM education WHERE id = " + id,
+    "DELETE FROM experience WHERE id = " + id,
     function (err, result) {
       res.redirect("/");
     }

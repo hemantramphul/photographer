@@ -7,9 +7,11 @@ var logger = require("morgan");
 var flash = require("express-flash");
 var session = require("express-session");
 
+// routes
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var educationRouter = require("./routes/education");
+var experienceRouter = require("./routes/experience");
 
 const port = process.env.PORT || 5000;
 
@@ -41,6 +43,7 @@ app.use(flash());
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/education", educationRouter);
+app.use("/experience", experienceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -52,7 +52,6 @@ router.get("/list", function (req, res, next) {
 /**
  * POST add photos via popup
  */
-// add a new book
 router.post("/add", upload.single("image"), function (req, res, next) {
   let user_id = req.session.userid;
   let title = req.body.title;

@@ -571,7 +571,7 @@
                   <!-- END: Education -->
                   <div class="experience padd-15">
                     <h3 class="title">
-                      Experience
+                      Experience <% if (loggin) { %>
                       <button
                         type="button"
                         class="btn btn-danger btn-sm float-right"
@@ -582,43 +582,246 @@
                       >
                         Add Experience
                       </button>
+                      <% } %>
                     </h3>
+                    <!-- Start Modal: ADD Experience -->
+                    <div class="modal fade" id="addExperienceModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Add Experience</h4>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                            >
+                              &times;
+                            </button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <form
+                              id="addExperienceForm"
+                              action="/experience/add"
+                              method="post"
+                            >
+                              <div class="form-group">
+                                <label>Month:</label>
+                                <input
+                                  id="addExperienceMonth"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_month"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Year:</label>
+                                <input
+                                  id="addExperienceYear"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_year"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Location:</label>
+                                <input
+                                  id="addExperienceLocation"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_location"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Field:</label>
+                                <input
+                                  id="addExperienceField"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_job"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <input
+                                  type="submit"
+                                  class="btn btn-success"
+                                  value="Save"
+                                />
+                              </div>
+                            </form>
+                          </div>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal: ADD Experience -->
+
+                    <!-- Start Modal: Edit Experience -->
+                    <div class="modal fade" id="editExperienceModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Experience</h4>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                            >
+                              &times;
+                            </button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <form
+                              id="editExperienceForm"
+                              action="/experience/update/"
+                              method="post"
+                            >
+                              <div class="form-group">
+                                <label>Month:</label>
+                                <input
+                                  id="updateExperienceMonth"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_month"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Year:</label>
+                                <input
+                                  id="updateExperienceYear"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_year"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Location:</label>
+                                <input
+                                  id="updateExperienceLocation"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_location"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Job:</label>
+                                <input
+                                  id="updateExperienceJob"
+                                  type="text"
+                                  class="form-control"
+                                  name="ex_job"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <input
+                                  type="submit"
+                                  class="btn btn-success"
+                                  value="Update"
+                                />
+                              </div>
+                            </form>
+                          </div>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal: Edit Experience -->
+
+                    <!-- Start Modal: DELETE Experience -->
+                    <div
+                      class="modal"
+                      tabindex="-1"
+                      role="dialog"
+                      id="deleteExperienceModal"
+                    >
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Delete</h5>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure, want to delete this experience?</p>
+                            <input
+                              type="hidden"
+                              name="experienceId"
+                              id="experienceId"
+                              value=""
+                            />
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              id="btnDeleteExperience"
+                            >
+                              Delete Permantely
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-dismiss="modal"
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal: DELETE Experience -->
                     <div class="row">
                       <div class="timeline-box padd-15">
                         <div class="timeline shadow-dark">
                           <!--  timeline item-->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Master in Computer Science
-                            </h4>
-                            <p class="timeline-text">qwerty</p>
-                          </div>
-                          <!--  timeline item-->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Master in Computer Science
-                            </h4>
-                            <p class="timeline-text">qwerty</p>
-                          </div>
-                          <!--  timeline item-->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Master in Computer Science
-                            </h4>
-                            <p class="timeline-text">qwerty</p>
-                          </div>
+                          <div id="experiences"></div>
                         </div>
                       </div>
                     </div>

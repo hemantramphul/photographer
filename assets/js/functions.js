@@ -7,6 +7,7 @@ $(document).ready(function () {
   // Loading data
   loadPhoto();
   loadEducation();
+  loadExperience();
 
   // Login
   $("#loginForm").submit(function (event) {
@@ -277,6 +278,119 @@ $(document).ready(function () {
     }).done(function (data) {
       loadEducation();
       $("#deleteEducationModal").modal("toggle");
+    });
+  });
+
+  /////////////////////////////////////////
+  // Experience ////////////////////////////
+  /////////////////////////////////////////
+
+  // Load Experience
+  function loadExperience() {
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "/experience/list", false);
+    xhttp.send();
+
+    const experiences = JSON.parse(xhttp.responseText);
+    document.getElementById("experiences").innerHTML = "";
+    let content = "";
+    for (let experience of experiences) {
+      content = `
+                <div class="timeline-item">
+                  <div class="circle-dot"></div>
+                  <h3 class="timeline-date">
+                    <i class="fa fa-calendar"></i> ${experience.ex_month} - ${experience.ex_year}`;
+      if (LOGIN) {
+        content += `<button type="button" class="btn btn-sm btn-danger float-right" data-experience-id="${experience.id}" data-toggle="modal" data-target="#deleteExperienceModal" 
+                      data-backdrop="static" data-keyboard="false">Delete</button>
+                    <button type="button" class="btn btn-sm btn-warning float-right" data-experience-id="${experience.id}" data-toggle="modal" data-target="#editExperienceModal"
+                      data-backdrop="static" data-keyboard="false" style="margin-right:5px;">Edit</button>`;
+      }
+      content += `</h3>
+                    <h4 class="timeline-title">
+                      ${experience.job}
+                    </h4>
+                    <p class="timeline-text"><i class="fa fa-map-pin"></i> ${experience.location}</p>
+                  </div>                
+        `;
+
+      document.getElementById("experiences").innerHTML += content;
+    }
+  }
+
+  // Refresh Experience
+  function refreshExperience() {
+    loadExperience();
+    $("#addExperienceModal").modal("toggle");
+    $("#addExperienceModal form")[0].reset();
+  }
+
+  // Add Experience
+  $("#addExperienceForm").submit(function (event) {
+    event.preventDefault();
+    $(this).ajaxSubmit({
+      error: function (xhr) {},
+      success: function (response) {
+        refreshExperience();
+      },
+    });
+  });
+
+  // Edit Experience
+  $("#editExperienceModal").on("shown.bs.modal", function (e) {
+    //get data-id attribute of the clicked element
+    var id = $(e.relatedTarget).data("experience-id");
+
+    e.preventDefault();
+    $.ajax({
+      type: "get",
+      url: "/experience/edit/" + id,
+      dataType: "json",
+    }).done(function (data) {
+      $("#updateExperienceMonth").val(data[0].ex_month);
+      $("#updateExperienceYear").val(data[0].ex_year);
+      $("#updateExperienceLocation").val(data[0].location);
+      $("#updateExperienceJob").val(data[0].job);
+      $("#editExperienceForm").attr(
+        "action",
+        "/experience/update/" + data[0].id
+      );
+    });
+  });
+
+  // Update Experience
+  $("#editExperienceForm").submit(function (event) {
+    event.preventDefault();
+    var url = $("#editExperienceForm").attr("action");
+    $(this).ajaxSubmit({
+      error: function (xhr) {},
+      success: function (response) {
+        loadExperience();
+        $("#editExperienceModal").modal("toggle");
+      },
+    });
+  });
+
+  // Delete Experience
+  $("#deleteExperienceModal").on("show.bs.modal", function (e) {
+    //get data-id attribute of the clicked element
+    var id = $(e.relatedTarget).data("experience-id");
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="experienceId"]').val(id);
+  });
+
+  $("#btnDeleteExperience").click(function (event) {
+    event.preventDefault();
+    const id = $("#experienceId").val();
+    $.ajax({
+      type: "get",
+      url: "/experience/delete/" + id,
+      dataType: "text",
+    }).done(function (data) {
+      loadExperience();
+      $("#deleteExperienceModal").modal("toggle");
     });
   });
 });

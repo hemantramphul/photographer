@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2022 at 12:00 PM
+-- Generation Time: Mar 17, 2022 at 09:12 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -39,6 +39,13 @@ CREATE TABLE `education` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `education`
+--
+
+INSERT INTO `education` (`id`, `user_id`, `year_start`, `year_ended`, `location`, `field`, `created_at`, `updated_at`) VALUES
+(4, 1, '2008', '2025', 'rrrrrrrrrrr988', 'trfffffff', '2022-03-17 06:20:34', '2022-03-17 08:11:24');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,14 @@ CREATE TABLE `experience` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `experience`
+--
+
+INSERT INTO `experience` (`id`, `user_id`, `ex_month`, `ex_year`, `location`, `job`, `created_at`, `updated_at`) VALUES
+(2, 1, '45675', '677', 'ddd', 'ddd3333', '2022-03-17 08:08:47', '2022-03-17 08:11:02'),
+(3, 1, '2000', '2010', '5erte', 'rertterer', '2022-03-17 08:08:53', '2022-03-17 08:11:06');
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +87,13 @@ CREATE TABLE `photos` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `user_id`, `title`, `location`, `description`, `image`, `created_at`, `updated_at`) VALUES
+(48, 1, 'Test', 'Rose Belle', 'eee 4444444444', 'image-1647504573467.gif', '2022-03-17 08:09:33', '2022-03-17 08:11:18');
 
 -- --------------------------------------------------------
 
@@ -92,7 +114,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`) VALUES
-(1, 'test', 'test', 'test', 'test@test.com');
+(1, 'test', 'test@test.com', 'test', 'test@test.com');
 
 --
 -- Indexes for dumped tables
@@ -123,7 +145,8 @@ ALTER TABLE `photos`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -133,19 +156,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `experience`
 --
 ALTER TABLE `experience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
