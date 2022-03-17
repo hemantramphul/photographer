@@ -56,6 +56,7 @@
   <body class="dark">
     <!-- Main Container Start -->
     <div class="main-container">
+      <input type="hidden" id="loginStatus" value="<%= loggin %>" />
       <!--- Aside Start --->
       <div class="aside">
         <div class="logo">
@@ -66,16 +67,15 @@
         </div>
         <ul class="nav">
           <li>
-            <a href="#home"
-              ><i class="fa fa-home"></i>Home <span><%= username %></span></a
-            >
+            <a href="#home"><i class="fa fa-home"></i>Home</a>
           </li>
+          <% if (!loggin) { %>
           <li>
             <a href="#login" data-toggle="modal" data-target="#loginModal"
               ><i class="fa fa-lock"></i>Login
-              <span class="loginUsername"></span
-            ></a>
+            </a>
           </li>
+          <% } %>
           <li>
             <a href="#about"><i class="fa fa-user"></i>About</a>
           </li>
@@ -83,8 +83,19 @@
             <a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a>
           </li>
           <li>
-            <a href="#contact"><i class="fa fa-comments"></i>Contact</a>
+            <a href="#contact"><i class="fa fa-comment"></i>Contact</a>
           </li>
+          <% if (loggin) { %>
+          <li>
+            <a
+              href="#logout"
+              data-toggle="modal"
+              data-target="#logoutModal"
+              class="active"
+              ><i class="fa fa-sign-out"></i>Logout</a
+            >
+          </li>
+          <% } %>
         </ul>
       </div>
       <!--- Aside End --->
@@ -147,7 +158,11 @@
                 >
                   Please enter correct username and password!
                 </div>
-                <form action="/authentication" method="post" id="loginForm">
+                <form
+                  action="/auth/authentication"
+                  method="post"
+                  id="loginForm"
+                >
                   <div class="form-group">
                     <input
                       type="text"
@@ -180,6 +195,48 @@
           </div>
         </div>
         <!--- Login Section End --->
+        <!-- Logout Modal: START -->
+        <div
+          class="modal fade"
+          tabindex="-1"
+          role="dialog"
+          id="logoutModal"
+          aria-hidden="true"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Logout</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure, want to sign out ?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnLogout">
+                  Logout
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Logout Modal: END -->
 
         <!--- About Section Start --->
         <section class="about section" id="about">
@@ -252,9 +309,10 @@
                   </div>
                 </div>
                 <div class="row">
+                  <!-- START: Education -->
                   <div class="education padd-15">
                     <h3 class="title">
-                      Education
+                      Education <% if (loggin) { %>
                       <button
                         type="button"
                         class="btn btn-danger btn-sm float-right"
@@ -265,48 +323,252 @@
                       >
                         Add Education
                       </button>
+                      <% } %>
                     </h3>
 
-                    <div class="row">
-                      <div class="timeline-box padd-15">
-                        <div class="timeline shadow-dark">
-                          <!--  timeline item-->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Master in Computer Science
-                            </h4>
-                            <p class="timeline-text">qwerty</p>
+                    <!-- Start Modal: ADD Education -->
+                    <div class="modal fade" id="addEducationModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Add Education</h4>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                            >
+                              &times;
+                            </button>
                           </div>
-                          <!--  timeline item-->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Master in Computer Science
-                            </h4>
-                            <p class="timeline-text">qwerty</p>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <form
+                              id="addEducationForm"
+                              action="/education/add"
+                              method="post"
+                            >
+                              <div class="form-group">
+                                <label>Start Year:</label>
+                                <input
+                                  id="addEducationStartYear"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_startyear"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Ended Year:</label>
+                                <input
+                                  id="addEducationEndYear"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_endyear"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Location:</label>
+                                <input
+                                  id="addEducationLocation"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_location"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Field:</label>
+                                <input
+                                  id="addEducationField"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_field"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <input
+                                  type="submit"
+                                  class="btn btn-success"
+                                  value="Save"
+                                />
+                              </div>
+                            </form>
                           </div>
-                          <!--  timeline item-->
-                          <div class="timeline-item">
-                            <div class="circle-dot"></div>
-                            <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> 2021 - 2022
-                            </h3>
-                            <h4 class="timeline-title">
-                              Master in Computer Science
-                            </h4>
-                            <p class="timeline-text">qwerty</p>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <!-- End Modal: ADD Education -->
+
+                    <!-- Start Modal: EDIT Education -->
+                    <div class="modal" id="editEducationModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Education</h4>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                            >
+                              &times;
+                            </button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <form
+                              id="editEducationForm"
+                              action="/edcuation/update/"
+                              method="post"
+                            >
+                              <div class="form-group">
+                                <label>Start Year:</label>
+                                <input
+                                  id="updateEducationStartYear"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_startyear"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Ended Year:</label>
+                                <input
+                                  id="updateEducationEndYear"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_endyear"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Location:</label>
+                                <input
+                                  id="updateEducationLocation"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_location"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label>Field:</label>
+                                <input
+                                  id="updateEducationField"
+                                  type="text"
+                                  class="form-control"
+                                  name="edu_field"
+                                  autocomplete="off"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <input
+                                  type="submit"
+                                  class="btn btn-success"
+                                  value="Update"
+                                />
+                              </div>
+                            </form>
+                          </div>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal: EDIT Education -->
+
+                    <!-- Start Modal: DELETE Education -->
+                    <div
+                      class="modal"
+                      tabindex="-1"
+                      role="dialog"
+                      id="deleteEducationModal"
+                    >
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Delete</h5>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure, want to delete this education?</p>
+                            <input
+                              type="hidden"
+                              name="educationId"
+                              id="educationId"
+                              value=""
+                            />
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              id="btnDeleteEducation"
+                            >
+                              Delete Permantely
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-dismiss="modal"
+                            >
+                              No
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal: DELETE -->
+                    <div class="row">
+                      <div class="timeline-box padd-15">
+                        <div class="timeline shadow-dark">
+                          <!--  timeline item-->
+                          <div id="educations"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <!-- END: Education -->
                   <div class="experience padd-15">
                     <h3 class="title">
                       Experience
@@ -376,11 +638,12 @@
                 <h2>Portfolio</h2>
               </div>
             </div>
+            <% if (loggin) { %>
             <div class="row">
               <div class="buttons padd-15">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-danger"
                   data-toggle="modal"
                   data-target="#addPhotoModal"
                   data-backdrop="static"
@@ -390,6 +653,7 @@
                 </button>
               </div>
             </div>
+            <% } %>
             <!-- Start Modal: ADD -->
             <div class="modal fade" id="addPhotoModal">
               <div class="modal-dialog">
@@ -583,7 +847,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <p>Are you sure, want to delete this record?</p>
+                    <p>Are you sure, want to delete this photo?</p>
                     <input type="hidden" name="photoId" id="photoId" value="" />
                   </div>
                   <div class="modal-footer">
@@ -606,7 +870,7 @@
               </div>
             </div>
             <!-- End Modal: DELETE -->
-            <br /><br /><br />
+            <br /><br />
             <div class="row" id="photos"></div>
           </div>
         </section>

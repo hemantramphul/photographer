@@ -32,6 +32,7 @@ router.get("/", function (req, res, next) {
   res.render("index", {
     username: req.session.username,
     userid: req.session.userid,
+    loggin: req.session.loggedin,
   });
 });
 
@@ -53,7 +54,7 @@ router.get("/list", function (req, res, next) {
  */
 // add a new book
 router.post("/add", upload.single("image"), function (req, res, next) {
-  let user_id = 1; //req.body.user_id;
+  let user_id = req.session.userid;
   let title = req.body.title;
   let location = req.body.location;
   let description = req.body.description;
@@ -134,41 +135,6 @@ router.get("/delete/(:id)", function (req, res, next) {
   dbConn.query("DELETE FROM photos WHERE id = " + id, function (err, result) {
     res.redirect("/");
   });
-});
-
-/**
- * POST authenticate user
- */
-router.post("/authentication", function (req, res, next) {
-  var email = req.body.email;
-  var password = req.body.password;
-
-  dbConn.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
-    [email, password],
-    function (err, rows, fields) {
-      if (err) throw err;
-
-      // if user not found
-      if (rows.length <= 0) {
-        res.json({
-          error: true,
-          message: "Please correct enter email and Password!",
-        });
-      } else {
-        // if user found
-        req.session.loggedin = true;
-        req.session.username = rows[0].username;
-        req.session.userid = rows[0].id;
-        res.json({
-          error: false,
-          message: "Login successfully !",
-          username: rows[0].username,
-          userid: rows[0].id,
-        });
-      }
-    }
-  );
 });
 
 module.exports = router;

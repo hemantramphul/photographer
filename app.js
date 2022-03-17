@@ -8,6 +8,8 @@ var flash = require("express-flash");
 var session = require("express-session");
 
 var indexRouter = require("./routes/index");
+var authRouter = require("./routes/auth");
+var educationRouter = require("./routes/education");
 
 const port = process.env.PORT || 5000;
 
@@ -37,6 +39,8 @@ app.use(
 app.use(flash());
 
 app.use("/", indexRouter);
+app.use("/auth", authRouter);
+app.use("/education", educationRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
